@@ -1,50 +1,86 @@
+import { useState } from 'react';
 import BasicCard from './BasicCard.js';
 import updates from './updates.json';
 
 export default function Home() {
+  const [isDark, setIsDark] = useState(false);
+
+  const toggleMode = () => {
+    console.log(isDark);
+    setIsDark(!isDark);
+  };
+
   return (
     <div
       style={{
         textAlign: 'left',
-        fontFamily: 'Consolas',
-        padding: '50px',
+        fontFamily: 'Garamond',
+        fontSize: '22px',
+        padding: '5vh',
+        height: '90vh',
+        background: isDark ? '#222' : '#EEE',
+        color: isDark ? '#EEE' : '#111',
       }}
     >
-      <div style={{ marginBottom: '30px' }}>
+      <div style={{ marginBottom: '10px', fontSize: '34px' }}>
         <u>Robotic Sign Language Club</u>
       </div>
 
-      <div style={{ marginBottom: '50px' }}>
+      <div>
+        <span
+          onClick={() => toggleMode()}
+          style={{ marginRight: '40px', cursor: 'pointer' }}
+        >
+          <b>{isDark ? 'dark' : 'light'} mode</b>
+        </span>
+
+        <span style={{ cursor: 'pointer' }}>
+          <b>en/fr</b>
+        </span>
+      </div>
+
+      <div style={{ marginTop: '30px', marginBottom: '50px' }}>
         We are developing mechanical arms that can translate spoken natural
         languages into sign language.
       </div>
 
       <div style={{ marginBottom: '50px' }}>
-        <b>Socials</b>
+        <b>
+          <u>Socials</u>
+        </b>
         <ul>
           <li style={{ margin: '10px' }}>
             Instagram:{' '}
             <a
               href="https://instagram.com/rsl.uo"
-              style={{ textDecoration: 'none', color: 'darkgreen' }}
+              style={{ textDecoration: 'none', color: isDark ? 'lightgreen' : 'darkgreen' }}
             >
-              instagram.com/rsl.uo
+              <b>instagram.com/rsl.uo</b>
             </a>
           </li>
           <li style={{ margin: '10px' }}>
             Email:{' '}
             <a
               href="mailto:robotic.sign@gmail.com"
-              style={{ textDecoration: 'none', color: 'darkgreen' }}
+              style={{ textDecoration: 'none', color: isDark ? 'lightgreen' : 'darkgreen' }}
             >
-              robotic.sign@gmail.com
+              <b>robotic.sign@gmail.com</b>
             </a>
           </li>
         </ul>
       </div>
 
       <div style={{ marginBottom: '50px' }}>
-        <b>Updates</b>
+        <b>
+          <u>Our constitution</u>
+        </b>{' '}
+        coming soon!
+      </div>
+
+      <div style={{ marginBottom: '50px' }}>
+        <b>
+          <u>Updates</u>
+        </b>
 
         {/* {
             "title": "",
